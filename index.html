@@ -3,97 +3,422 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DaggerQuest | Browser ARPG</title>
-    <meta name="description" content="Play DaggerQuest, a browser-based action RPG. Dive into adventure, battle monsters, and collect loot in this free online game.">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://DaggerQuest.com/">
-    <meta property="og:title" content="DaggerQuest | Browser ARPG">
-    <meta property="og:description" content="Play DaggerQuest, a browser-based action RPG. Dive into adventure, battle monsters, and collect loot in this free online game.">
-    <meta property="og:image" content="https://DaggerQuest.com/game/images/logo-lsheet0.avif">
-    <meta property="og:image:alt" content="DaggerQuest Logo">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://DaggerQuest.com/">
-    <meta property="twitter:title" content="DaggerQuest | Browser ARPG">
-    <meta property="twitter:description" content="Play DaggerQuest, a browser-based action RPG. Dive into adventure, battle monsters, and collect loot in this free online game.">
-    <meta property="twitter:image" content="https://DaggerQuest.com/game/images/logo-lsheet0.avif">
+    <title>DaggerQuest | Test Realm</title>
+    <meta name="description" content="The Test Realm of DaggerQuest, a browser-based ARPG.">
     
     <link rel="preload" href="game/fonts/cinzel-semibold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="game/fonts/grenze-semibold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css">
-    <link rel="canonical" href="https://DaggerQuest.com/" />
-</head>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoGame",
-  "name": "DaggerQuest",
-  "url": "https://DaggerQuest.com/",
-  "image": "https://DaggerQuest.com/game/images/logo-lsheet0.avif",
-  "description": "Play DaggerQuest, a browser-based action RPG. Dive into adventure, battle monsters, and collect loot in this free online game.",
-  "author": {
-    "@type": "Organization",
-    "name": "Laserwolve Games"
-  },
-  "applicationCategory": "Game",
-  "operatingSystem": "All",
-  "genre": ["Action", "RPG", "Browser Game"],
-  "inLanguage": "en",
-  "offers": {
-    "@type": "Offer",
-    "price": "0.00",
-    "priceCurrency": "USD"
-  }
-}
-</script>
+    <link rel="icon" type="image/png" href="game/icons/icon-64.png">
+    <style>
+        /* Font faces */
+        @font-face {
+            font-family: 'Cinzel';
+            src: url('game/fonts/cinzel-semibold.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+            font-display: block;
+        }
+        @font-face {
+            font-family: 'Grenze';
+            src: url('game/fonts/grenze-semibold.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+            font-display: block;
+        }
+
+        /* Base styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: #111;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Grenze', serif;
+            font-size: 1.1em;
+            color: #a29273 !important;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            width: 100%;
+            background: #181818ee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            padding: 18px 0 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 12px #0006;
+        }
+
+        .navbar-logo-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-right: 16px;
+        }
+
+        #header-logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .test-realm-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9em;
+            color: #e0d8c3;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            text-transform: lowercase;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-links li {
+            display: block;
+        }
+
+        .navbar-hamburger, .navbar-menu {
+            display: none;
+        }
+
+        .navbar a {
+            font-family: 'Cinzel', serif !important;
+            font-weight: 600;
+            color: #e0d8c3;
+            text-decoration: none;
+            font-size: 1.25em;
+            letter-spacing: 1.5px;
+            padding: 4px 18px;
+            border-radius: 6px;
+            transition: background 0.18s, color 0.18s;
+        }
+
+        .navbar a:hover, .navbar a:focus {
+            background: #2a2a1f;
+            color: #fffbe6;
+        }
+
+        /* Container and layout */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            font-size: 1.1em;
+        }
+
+        .container.flex-ads {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            gap: 0;
+        }
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 1400px;
+            flex: 0 0 auto;
+        }
+
+        /* Game frame */
+        .game-frame {
+            width: 1280px;
+            min-width: 1280px;
+            min-height: 720px;
+            border: none;
+            background: #222;
+            margin-top: 0;
+        }
+
+        /* Mobile message */
+        #mobile-message {
+            display: none;
+            text-align: center;
+            padding: 2em;
+            font-size: 1.2em;
+            box-sizing: border-box;
+            max-width: 98vw;
+            margin-left: auto;
+            margin-right: auto;
+            word-break: break-word;
+        }
+
+        /* Footer styles */
+        .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            gap: 6px;
+            margin-top: 24px;
+            margin-bottom: 24px;
+            color: #aaa;
+            font-family: 'Grenze', serif;
+            font-size: 1.1em;
+        }
+
+        .footer .footer-main {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer .footer-logo-link {
+            display: inline-block;
+        }
+
+        .footer .footer-logo-img {
+            height: 64px;
+            vertical-align: middle;
+        }
+
+        .footer .footer-links {
+            margin-top: 0;
+        }
+
+        .footer .footer-sep {
+            margin: 0 8px;
+        }
+
+        .footer a,
+        .footer a.footer-brand {
+            color: #fff !important;
+            text-decoration: underline !important;
+        }
+
+        .footer-desktop { display: block; }
+        .footer-mobile { display: none; }
+
+        /* Responsive styles */
+        @media (max-width: 900px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block !important; }
+            .game-frame { display: none !important; }
+        }
+
+        @media (min-width: 901px) {
+            .mobile-only { display: none !important; }
+        }
+
+        @media (max-width: 700px) {
+            .navbar-links.desktop-only {
+                display: none !important;
+            }
+            
+            .navbar-hamburger.mobile-only {
+                display: flex !important;
+                background: none;
+                border: none;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                padding: 8px 12px;
+                margin-left: auto;
+                margin-right: 8px;
+                z-index: 20;
+            }
+            
+            .navbar-hamburger-bar {
+                width: 28px;
+                height: 4px;
+                background: #e0d8c3;
+                margin: 4px 0;
+                border-radius: 2px;
+                display: block;
+            }
+            
+            .navbar-menu.mobile-only {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100vw;
+                background: #181818ee;
+                flex-direction: column;
+                gap: 0;
+                display: none;
+                box-shadow: 0 2px 12px #0006;
+                z-index: 15;
+                pointer-events: none;
+                transition: transform 0.3s cubic-bezier(.4,0,.2,1), opacity 0.3s cubic-bezier(.4,0,.2,1);
+                transform: translateY(-20px);
+                opacity: 0;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .navbar-menu.mobile-only.open {
+                display: flex !important;
+                pointer-events: auto;
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .navbar-menu.mobile-only li {
+                display: block;
+                width: 100%;
+            }
+            
+            .navbar-menu.mobile-only a {
+                display: block;
+                width: 100%;
+                padding: 16px 0;
+                font-size: 1.1em;
+                text-align: center;
+                border-radius: 0;
+                margin: 0;
+                border-bottom: 1px solid #222;
+                box-sizing: border-box;
+            }
+            
+            #header-logo {
+                height: 40px !important;
+                max-width: 90vw;
+            }
+
+            .footer {
+                box-sizing: border-box;
+                padding-left: 8px;
+                padding-right: 8px;
+                margin-left: 0;
+                margin-right: 0;
+                max-width: 100vw;
+            }
+            
+            .footer-desktop { display: none !important; }
+            .footer-mobile { display: block !important; }
+            
+            .footer-mobile a[href="https://DaggerQuest.com/privacy-policy"] {
+                margin-top: 16px;
+                display: inline-block;
+            }
+
+            .game-frame {
+                aspect-ratio: 9/16;
+                width: 98vw;
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
-    <header id="header"></header>
+    <header id="header">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <a href="https://Test.DaggerQuest.com" class="navbar-logo-link" aria-label="DaggerQuest Home">
+                <img id="header-logo" src="images/logo.webp" alt="DaggerQuest Logo">
+                <span class="test-realm-text">Test Realm</span>
+            </a>
+            <ul class="navbar-links desktop-only" role="list">
+                <li><a href="https://DaggerQuest.com">main site</a></li>
+
+                <li><a href="https://DaggerQuest.com/support">report a bug</a></li>
+            </ul>
+            <button class="navbar-hamburger mobile-only" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileMenu(this)">
+                <span class="navbar-hamburger-bar"></span>
+                <span class="navbar-hamburger-bar"></span>
+                <span class="navbar-hamburger-bar"></span>
+            </button>
+            <ul class="navbar-menu mobile-only" role="list">
+                <li><a href="https://DaggerQuest.com">home</a></li>
+                <li><a href="https://DaggerQuest.com/news">news</a></li>
+                <li><a href="https://DaggerQuest.com/guide">guide</a></li>
+                <li><a href="https://DaggerQuest.com/media">media</a></li>
+                <li><a href="https://DaggerQuest.com/support">support</a></li>
+            </ul>
+        </nav>
+    </header>
     <main class="container flex-ads">
-        <aside class="ad-slot left-ad desktop-only">
-            <!-- DaggerQuest Left Ad -->
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2087729758302145"
-                crossorigin="anonymous"></script>
-            <!-- DaggerQuest Game Ads -->
-            <ins class="adsbygoogle"
-                style="display:inline-block;width:200px;height:720px"
-                data-ad-client="ca-pub-2087729758302145"
-                data-ad-slot="2524300910"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </aside>
         <section class="center-content">
             <iframe class="game-frame desktop-only" src="game/index.html" allowfullscreen loading="lazy" title="DaggerQuest Game"></iframe>
             <div id="mobile-message" class="mobile-only">
                 DaggerQuest is not yet available for mobile devices. Check back soon!
             </div>
-            <footer id="footer"></footer>
+            <footer class="footer" role="contentinfo">
+                <div class="footer-main">
+                    <span>&copy; 2025</span>
+                    <a href="https://LaserwolveGames.com" class="footer-brand">Laserwolve Games</a>
+                    <a href="https://LaserwolveGames.com" class="footer-logo-link" aria-label="Laserwolve Games Website">
+                        <img src="images/laserwolveGamesLogo.webp" alt="Laserwolve Games Logo" class="footer-logo-img">
+                    </a>
+                </div>
+                <nav class="footer-links footer-desktop" aria-label="Footer navigation">
+                    <span>Licensed and distributed under </span>
+                    <a href="https://www.gnu.org/licenses/agpl-3.0.html.en" rel="license">AGPL-3.0</a>
+                    <span class="footer-sep">|</span>
+                    <a href="https://DaggerQuest.com/privacy-policy">Privacy Policy</a>
+                    <span class="footer-sep">|</span>
+                    <a href="https://DaggerQuest.com/terms-of-use">Terms of Service</a>
+                </nav>
+                <nav class="footer-links footer-mobile" aria-label="Footer navigation mobile">
+                    <span>Licensed and distributed under </span>
+                    <a href="https://www.gnu.org/licenses/agpl-3.0.html.en" rel="license">AGPL-3.0</a><br>
+                    <a href="https://DaggerQuest.com/privacy-policy">Privacy Policy</a> |
+                    <a href="https://DaggerQuest.com/terms-of-use">Terms of Service</a> |
+                    <a href="https://DaggerQuest.com/sitemap">Sitemap</a>
+                </nav>
+            </footer>
         </section>
-        <aside class="ad-slot right-ad desktop-only">
-            <!-- DaggerQuest Right Ad -->
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2087729758302145"
-                crossorigin="anonymous"></script>
-            <!-- DaggerQuest Game Ads -->
-            <ins class="adsbygoogle"
-                style="display:inline-block;width:200px;height:720px"
-                data-ad-client="ca-pub-2087729758302145"
-                data-ad-slot="2524300910"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2087729758302145"
-                 data-ad-slot="2524300910"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-        </aside>
     </main>
-    <script src="includes.js"></script>
-    <script src="mobile-detect.js"></script>
+    <script>
+        // Function to toggle mobile menu with accessibility support
+        function toggleMobileMenu(button) {
+            const menu = document.querySelector('.navbar-menu');
+            if (menu) {
+                const isOpen = menu.classList.contains('open');
+                menu.classList.toggle('open');
+                button.setAttribute('aria-expanded', !isOpen);
+            }
+        }
+
+        // Make the function globally available
+        window.toggleMobileMenu = toggleMobileMenu;
+
+        // Detect mobile and show/hide elements accordingly (for extra safety)
+        const isMobile = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        document.addEventListener('DOMContentLoaded', () => {
+            if (isMobile()) {
+                document.querySelectorAll('.desktop-only').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.game-frame').forEach(el => el.style.display = 'none');
+                const msg = document.getElementById('mobile-message');
+                if (msg) msg.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
