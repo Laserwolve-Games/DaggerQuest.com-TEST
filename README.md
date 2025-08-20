@@ -1,4 +1,4 @@
-![DaggerQuest Test Realm Graphic](images/testRealm.png)
+![DaggerQuest Test Realm Graphic](images/testRealm.webp)
 
 ### The official testing environment for *DaggerQuest*.
 
