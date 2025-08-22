@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "DaggerQuest Test Realm"
+abstract: "The official testing environment for DaggerQuest, providing a staging area for new releases and features before deployment to production."
+authors:
+  - family-names: "Laserwolve Games"
+    email: "contact@laserwolvegames.com"
+repository-code: "https://github.com/Laserwolve-Games/DaggerQuest-Test-Realm"
+url: "https://test.daggerquest.com"
+license: AGPL-3.0
+keywords:
+  - "testing"
+  - "staging"
+  - "development"
+  - "daggerquest"
+  - "test-environment"
+  - "html5"
+  - "game-testing"
+version: "1.0.0"
+date-released: "2025-08-20"
+preferred-citation:
+  type: software
+  title: "DaggerQuest Test Realm: Development Testing Environment"
+  authors:
+    - family-names: "Laserwolve Games"
+      email: "contact@laserwolvegames.com"
+  repository-code: "https://github.com/Laserwolve-Games/DaggerQuest-Test-Realm"
+  url: "https://test.daggerquest.com"
+  version: "1.0.0"
+  date-released: "2025-08-20"
+  license: AGPL-3.0
